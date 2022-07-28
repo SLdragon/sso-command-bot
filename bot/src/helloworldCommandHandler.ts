@@ -4,7 +4,7 @@ import {
   TeamsFxBotCommandHandler,
   TriggerPatterns,
   MessageBuilder,
-} from "@microsoft/teamsfx";
+} from "./sdk/index";
 import helloWorldCard from "./adaptiveCards/helloworldCommand.json";
 import { CardData } from "./cardModels";
 
