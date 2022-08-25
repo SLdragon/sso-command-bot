@@ -1,6 +1,5 @@
 import * as restify from "restify";
 import { commandBot } from "./internal/initialize";
-import { TeamsSsoBot } from "./sso/teamsSsoBot";
 const path = require("path");
 
 // This template uses `restify` to serve HTTP responses.
@@ -16,13 +15,9 @@ server.listen(process.env.port || process.env.PORT || 3978, () => {
 // The Teams Toolkit bot registration configures the bot with `/api/messages` as the
 // Bot Framework endpoint. If you customize this route, update the Bot registration
 // in `templates/azure/provision/botservice.bicep`.
-const handler = new TeamsSsoBot();
 // Process Teams activity with Bot Framework.
 server.post("/api/messages", async (req, res) => {
-    await commandBot.requestHandler(req, res, async (context)=> {
-        await handler.run(context);
-    })
-    .catch((err) => {
+    await commandBot.requestHandler(req, res).catch((err) => {
         // Error message including "412" means it is waiting for user's consent, which is a normal process of SSO, sholdn't throw this error.
         if (!err.message.includes("412")) {
             throw err;

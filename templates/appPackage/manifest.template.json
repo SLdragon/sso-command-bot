@@ -42,8 +42,12 @@
                     ],
                     "commands": [
                         {
-                            "title": "helloWorld",
+                            "title": "welcome",
                             "description": "A helloworld command to send a welcome message"
+                        },
+                        {
+                            "title": "profile",
+                            "description": "Show user profile using Single Sign On feature"
                         }
                     ]
                 }

@@ -4,7 +4,7 @@ import {
   TeamsFxBotCommandHandler,
   TriggerPatterns,
   MessageBuilder,
-} from "./sdk/index";
+} from "./sdk";
 import helloWorldCard from "./adaptiveCards/helloworldCommand.json";
 import { CardData } from "./cardModels";
 
@@ -13,11 +13,11 @@ import { CardData } from "./cardModels";
  * with an Adaptive Card if the user types the `triggerPatterns`.
  */
 export class HelloWorldCommandHandler implements TeamsFxBotCommandHandler {
-  triggerPatterns: TriggerPatterns = "helloWorld";
+  triggerPatterns: TriggerPatterns = "welcome";
 
   async handleCommandReceived(
     context: TurnContext,
-    message: CommandMessage
+    message: CommandMessage,
   ): Promise<string | Partial<Activity> | void> {
     console.log(`Bot received message: ${message.text}`);
 
