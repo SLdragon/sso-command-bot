@@ -9,6 +9,7 @@ server.listen(process.env.port || process.env.PORT || 3978, () => {
   console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
 });
 
+
 // Register an API endpoint with `restify`. Teams sends messages to your application
 // through this endpoint.
 //
