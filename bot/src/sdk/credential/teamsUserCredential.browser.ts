@@ -214,7 +214,7 @@ export class TeamsUserCredential implements TokenCredential {
         tokenResponse = await this.msalInstance!.acquireTokenSilent(
           scopesRequestForAcquireTokenSilent
         );
-      } catch (error: any) {
+      } catch (error) {
         const acquireTokenSilentFailedMessage = `Failed to call acquireTokenSilent. Reason: ${error?.message}. `;
         internalLogger.verbose(acquireTokenSilentFailedMessage);
       }
@@ -228,7 +228,7 @@ export class TeamsUserCredential implements TokenCredential {
             redirectUri: `${domain}/blank-auth-end.html`,
           };
           tokenResponse = await this.msalInstance!.ssoSilent(scopesRequestForSsoSilent);
-        } catch (error: any) {
+        } catch (error) {
           const ssoSilentFailedMessage = `Failed to call ssoSilent. Reason: ${error?.message}. `;
           internalLogger.verbose(ssoSilentFailedMessage);
         }
@@ -382,7 +382,7 @@ export class TeamsUserCredential implements TokenCredential {
       sessionStorageKeys.forEach((key) => {
         sessionStorage.setItem(key, sessionStorageValues[key]);
       });
-    } catch (error: any) {
+    } catch (error) {
       // Values in result.sessionStorage can not be set into session storage.
       // Throw error since this may block user.
       const errorMessage = `Failed to set values in session storage. Error: ${error.message}`;

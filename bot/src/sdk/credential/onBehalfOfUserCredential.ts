@@ -182,7 +182,7 @@ export class OnBehalfOfUserCredential implements TokenCredential {
     return getUserInfoFromSsoToken(this.ssoToken.token);
   }
 
-  private generateAuthServerError(err: any): Error {
+  private generateAuthServerError(err): Error {
     const errorMessage = err.errorMessage;
     if (err.name === "InteractionRequiredAuthError") {
       const fullErrorMsg =

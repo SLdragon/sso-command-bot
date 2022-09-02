@@ -1,7 +1,7 @@
 import { ConversationState, MemoryStorage, UserState } from "botbuilder";
 import { HelloWorldCommandHandler } from "../helloworldCommandHandler";
 import { ProfileSsoCommandHandler } from "../profileSsoCommandHandler";
-import {ConversationBot, DefaultSsoExecutionActivityHandler, SsoExecutionDialog, TeamsFx} from "../sdk";
+import {ConversationBot, DefaultBotSsoExecutionActivityHandler, BotSsoExecutionDialog, TeamsFx} from "../sdk";
 import "isomorphic-fetch";
 
 const storage = new MemoryStorage();
@@ -17,27 +17,31 @@ export const commandBot = new ConversationBot({
     appId: process.env.BOT_ID,
     appPassword: process.env.BOT_PASSWORD,
   },
-
+  // ssoConfig is optional and by default using the values below
+  ssoConfig: {
+    aad :{
+      scopes:["User.Read"],
+      clientId: process.env.M365_CLIENT_ID,
+      clientSecret: process.env.M365_CLIENT_SECRET,
+      tenantId: process.env.M365_TENANT_ID,
+      authorityHost: process.env.M365_AUTHORITY_HOST,
+      initiateLoginEndpoint: process.env.INITIATE_LOGIN_ENDPOINT,
+      applicationIdUri: process.env.M365_APPLICATION_ID_URI
+    },
+    dialog: {
+      CustomBotSsoExecutionActivityHandler: DefaultBotSsoExecutionActivityHandler,
+      userState: new UserState(storage),
+      conversationState: new ConversationState(storage),
+      dedupStorage: storage,
+      ssoPromptConfig: {
+        timeout: 900000,
+        endOnInvalidMessage: true
+      }
+    }
+  },
   command: {
     enabled: true,
     commands: [new HelloWorldCommandHandler() ],
     ssoCommands: [new ProfileSsoCommandHandler()],
-    // ssoConfig is optional and by default using the values below
-    ssoConfig: {
-      CustomSsoExecutionActivityHandler: DefaultSsoExecutionActivityHandler,
-      scopes: ["User.Read"],
-      userState: new UserState(storage),
-      conversationState: new ConversationState(storage),
-      dedupStorage: storage,
-      teamsFxConfig: {
-        clientId: process.env.M365_CLIENT_ID,
-        clientSecret: process.env.M365_CLIENT_SECRET,
-        tenantId: process.env.M365_TENANT_ID,
-        authorityHost: process.env.M365_AUTHORITY_HOST,
-        initiateLoginEndpoint: process.env.INITIATE_LOGIN_ENDPOINT,
-        applicationIdUri: process.env.M365_APPLICATION_ID_URI
-      }
-    }
-
   },
 });

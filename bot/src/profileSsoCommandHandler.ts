@@ -1,4 +1,5 @@
 import { Activity, TurnContext } from "botbuilder";
+import { TeamsBotSsoPromptTokenResponse } from "teamsfx-test";
 import {
   CommandMessage,
   TriggerPatterns,
@@ -13,12 +14,13 @@ export class ProfileSsoCommandHandler implements TeamsFxBotSsoCommandHandler {
   async handleCommandReceived(
     context: TurnContext,
     message: CommandMessage,
-    ssoToken: string,
+    tokenResponse: TeamsBotSsoPromptTokenResponse,
   ): Promise<string | Partial<Activity> | void> {
     await context.sendActivity("Retrieving user information from Microsoft Graph ...");
 
+    
     // Init TeamsFx instance with SSO token
-    const teamsfx = new TeamsFx().setSsoToken(ssoToken);
+    const teamsfx = new TeamsFx().setSsoToken(tokenResponse.ssoToken);
 
     // Add scope for your Azure AD app. For example: Mail.Read, etc.
     const graphClient = createMicrosoftGraphClient(teamsfx, ["User.Read"]);
