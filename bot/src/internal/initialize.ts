@@ -21,23 +21,23 @@ export const commandBot = new ConversationBot({
   ssoConfig: {
     aad :{
       scopes:["User.Read"],
-      clientId: process.env.M365_CLIENT_ID,
-      clientSecret: process.env.M365_CLIENT_SECRET,
-      tenantId: process.env.M365_TENANT_ID,
-      authorityHost: process.env.M365_AUTHORITY_HOST,
-      initiateLoginEndpoint: process.env.INITIATE_LOGIN_ENDPOINT,
-      applicationIdUri: process.env.M365_APPLICATION_ID_URI
+      // clientId: process.env.M365_CLIENT_ID,
+      // clientSecret: process.env.M365_CLIENT_SECRET,
+      // tenantId: process.env.M365_TENANT_ID,
+      // authorityHost: process.env.M365_AUTHORITY_HOST,
+      // initiateLoginEndpoint: process.env.INITIATE_LOGIN_ENDPOINT,
+      // applicationIdUri: process.env.M365_APPLICATION_ID_URI
     },
-    dialog: {
-      CustomBotSsoExecutionActivityHandler: DefaultBotSsoExecutionActivityHandler,
-      userState: new UserState(storage),
-      conversationState: new ConversationState(storage),
-      dedupStorage: storage,
-      ssoPromptConfig: {
-        timeout: 900000,
-        endOnInvalidMessage: true
-      }
-    }
+    //dialog: {
+      // CustomBotSsoExecutionActivityHandler: DefaultBotSsoExecutionActivityHandler,
+      // userState: new UserState(storage),
+      // conversationState: new ConversationState(storage),
+      // dedupStorage: storage,
+      // ssoPromptConfig: {
+        // timeout: 900000,
+        // endOnInvalidMessage: true
+      // }
+    //}
   },
   command: {
     enabled: true,

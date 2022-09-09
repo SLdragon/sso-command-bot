@@ -8,3 +8,14 @@ subscriptionInfo.json
 build
 .fx/configs/config.local.json
 .fx/states/state.local.json
+/.idea/command-bot-ts.iml
+/.idea/libraries/SimpleAuth.xml
+/.idea/libraries/SimpleAuth1.xml
+/.idea/libraries/appPackage.xml
+/.idea/libraries/deployment.xml
+/.idea/libraries/fallback.xml
+/.idea/libraries/fallback1.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
