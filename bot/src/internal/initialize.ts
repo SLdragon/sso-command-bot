@@ -1,7 +1,7 @@
 import { ConversationState, MemoryStorage, UserState } from "botbuilder";
 import { HelloWorldCommandHandler } from "../helloworldCommandHandler";
 import { ProfileSsoCommandHandler } from "../profileSsoCommandHandler";
-import {ConversationBot, DefaultBotSsoExecutionActivityHandler, BotSsoExecutionDialog, TeamsFx} from "../sdk";
+import {ConversationBot, BotSsoExecutionDialog, TeamsFx} from "../sdk";
 import "isomorphic-fetch";
 
 const storage = new MemoryStorage();
@@ -29,7 +29,6 @@ export const commandBot = new ConversationBot({
       // applicationIdUri: process.env.M365_APPLICATION_ID_URI
     },
     //dialog: {
-      // CustomBotSsoExecutionActivityHandler: DefaultBotSsoExecutionActivityHandler,
       // userState: new UserState(storage),
       // conversationState: new ConversationState(storage),
       // dedupStorage: storage,
