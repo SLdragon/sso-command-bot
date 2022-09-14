@@ -3,6 +3,7 @@ import { HelloWorldCommandHandler } from "../helloworldCommandHandler";
 import { ProfileSsoCommandHandler } from "../profileSsoCommandHandler";
 import {ConversationBot, BotSsoExecutionDialog, TeamsFx} from "../sdk";
 import "isomorphic-fetch";
+import { PhotoSsoCommandHandler } from "../photoSsoCommandHandler";
 
 const storage = new MemoryStorage();
 
@@ -41,6 +42,6 @@ export const commandBot = new ConversationBot({
   command: {
     enabled: true,
     commands: [new HelloWorldCommandHandler() ],
-    ssoCommands: [new ProfileSsoCommandHandler()],
+    ssoCommands: [new ProfileSsoCommandHandler(), new PhotoSsoCommandHandler()],
   },
 });
