@@ -6,7 +6,7 @@ import {
   TeamsFx,
   createMicrosoftGraphClient,
   TeamsFxBotSsoCommandHandler,
-} from "./sdk";
+} from "@microsoft/teamsfx";
 
 export class ProfileSsoCommandHandler implements TeamsFxBotSsoCommandHandler {
   triggerPatterns: TriggerPatterns = "profile";

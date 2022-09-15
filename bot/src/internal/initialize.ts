@@ -1,7 +1,7 @@
 import { ConversationState, MemoryStorage, UserState } from "botbuilder";
 import { HelloWorldCommandHandler } from "../helloworldCommandHandler";
 import { ProfileSsoCommandHandler } from "../profileSsoCommandHandler";
-import {ConversationBot, BotSsoExecutionDialog, TeamsFx} from "../sdk";
+import {ConversationBot, BotSsoExecutionDialog, TeamsFx} from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import { PhotoSsoCommandHandler } from "../photoSsoCommandHandler";
 

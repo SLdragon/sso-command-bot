@@ -6,7 +6,7 @@ TeamsFx,
 createMicrosoftGraphClient,
 TeamsFxBotSsoCommandHandler,
 TeamsBotSsoPromptTokenResponse,
-} from "./sdk";
+} from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 
 export class PhotoSsoCommandHandler implements TeamsFxBotSsoCommandHandler {

@@ -18,7 +18,7 @@
         "url": "https://github.com"
     },
     "dependencies": {
-        "teamsfx-test": "C:\\Users\\rentu\\Desktop\\TeamsProjects\\000-bot-investigation\\microsoft-teamsfx-1.1.3.tgz",
+        "@microsoft/teamsfx": "^1.2.0-rc.0",
         "botbuilder": "4.15.0",
         "isomorphic-fetch": "^3.0.0",
         "restify": "^8.5.1"
